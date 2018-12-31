@@ -92,3 +92,4 @@ export ENTORNO='host'
 autoload -Uz compinit && compinit -i
 fpath=(~/.zsh/completion $fpath)
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+. /usr/share/powerline/zsh/powerline.zsh
