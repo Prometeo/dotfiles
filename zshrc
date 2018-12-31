@@ -88,7 +88,7 @@ antibody bundle zsh-users/zsh-syntax-highlighting
 antibody bundle zsh-users/zsh-completions
 antibody bundle zsh-users/zsh-autosuggestions
 export ENTORNO='host'
-. /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+. $HOME/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 autoload -Uz compinit && compinit -i
 fpath=(~/.zsh/completion $fpath)
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
