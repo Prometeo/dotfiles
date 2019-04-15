@@ -93,3 +93,21 @@ autoload -Uz compinit && compinit -i
 fpath=(~/.zsh/completion $fpath)
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 . /usr/share/powerline/zsh/powerline.zsh
+
+# Navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias -- -="cd -"
+
+# Shortcuts
+alias ls="ls --color"
+alias -- +x="chmod +x"
+alias o="open"
+alias oo="open ."
+alias e="$EDITOR"
+
+# Git
+alias gs="git status"
+alias gc="git commit"
