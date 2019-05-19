@@ -1,0 +1,22 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.tmux.conf:
+      force: true
+      path: tmux.conf
+    ~/.aliases:
+      force: true
+      path: aliases
+    ~/.jsbeautifyrc:
+      force: true
+      path: jsbeautifyrc
+    ~/.zshrc:
+      force: true
+      path: zshrc
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
