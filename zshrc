@@ -101,3 +101,8 @@ source ~/.aliases
 function mk() {
   mkdir -p "$@" && cd "$@"
 }
+export XAUTHORITY=/home/prometeo/.Xauthority
+export XAUTHORITY=/home/prometeo/.Xauthority
+export WORKON_HOME=~/.virtualenvs
+VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
+source /usr/local/bin/virtualenvwrapper.sh

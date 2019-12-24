@@ -17,4 +17,4 @@ alias gs="git status"
 alias gc="git commit"
 
 # python
-alias pipf="pip install jedi black autopep8 yapf rope flake8"
+alias pipf="pip3 install jedi black autopep8 yapf rope flake8"
