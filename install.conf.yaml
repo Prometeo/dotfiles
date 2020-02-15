@@ -17,6 +17,8 @@
     ~/.zshrc:
       force: true
       path: zshrc
-
+    ~/.config/alacritty/alacritty.yml:
+      force: true
+      path: alacritty.yaml
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
