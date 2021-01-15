@@ -113,3 +113,4 @@ export PATH="$HOME/.local/bin/:$PATH"
 
 # Execute neofetch on startup
 neofetch
+[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
