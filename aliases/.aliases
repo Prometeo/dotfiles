@@ -1,0 +1,32 @@
+# Navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias -- -="cd -"
+
+# Listing
+alias ls="ls --color=auto -CF"
+alias ll="ls -alF"
+alias la="ls -A"
+alias -- +x="chmod +x"
+alias o="open"
+alias oo="open ."
+alias e="$EDITOR"
+
+# Working on files
+alias mv="mv -i"
+
+# Git
+# alias gs="git status"
+alias gc="git commit"
+alias gp="git push"
+alias gd="git diff"
+
+# python
+alias pipf="pip3 install jedi black autopep8 yapf rope flake8 pysort"
+
+# Exports
+export EDITOR=vim
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01' # Colored warnings for gcc
+HISTCONTROL=ignoreboth:erasedups # do not save duplicate commands:erase previous duplicated commands before saving the last one
