@@ -30,3 +30,6 @@ alias pipf="pip3 install jedi black autopep8 yapf rope flake8 pysort"
 export EDITOR=vim
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01' # Colored warnings for gcc
 HISTCONTROL=ignoreboth:erasedups # do not save duplicate commands:erase previous duplicated commands before saving the last one
+
+# Ripgrep
+alias grep="rg"
