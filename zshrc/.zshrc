@@ -110,7 +110,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
       eval "$(pyenv init -)"
 fi
 export PATH="$HOME/.local/bin/:$PATH"
-
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 # Execute neofetch on startup
 # neofetch
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
