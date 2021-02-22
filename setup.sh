@@ -14,6 +14,7 @@ useronly=(
     tmux
     xmobar
     xmonad
+    starship
 )
 
 # run the stow command for the passed in directory ($2) in location $1

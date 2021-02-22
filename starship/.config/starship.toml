@@ -1,0 +1,92 @@
+# Use custom format
+# format = """
+# [┌───────────────────>](bold green)
+# [│](bold green)$directory$rust$package
+# [└─>](bold green) """
+
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10
+
+# Disable the newline at the start of the prompt
+add_newline = false
+
+# makes prompt a single line
+[line_break]
+disabled = true
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+# Show command duration over 10,000 milliseconds (= 10 sec)
+[cmd_duration]
+min_time = 10_000
+format = "took [$duration]($style)"
+
+[character]
+success_symbol = "[➜](bold green) "
+error_symbol = "[✗](bold red) "
+
+# These symbols will only show when battery levels are 20% or less
+[battery]
+charging_symbol = "⚡️ "
+discharging_symbol = "💀 "
+
+[[battery.display]]  # "bold red" style when capacity is between 0% and 20%
+threshold = 20
+style = "bold red"
+
+# Clear visibility for exit codes
+[status]
+style = "bg:red"
+symbol = "💣 "
+format = '[\[$symbol$status\]]($style) '
+disabled = false
+
+[hostname]
+ssh_only = false
+format =  "on [$hostname](bold blue) "
+trim_at = ".companyname.com"
+disabled = false
+
+[aws]
+format = 'on [$symbol$profile(\($region\))]($style) '
+style = "bold blue"
+symbol = "🅰 "
+[aws.region_aliases]
+ap-southeast-2 = "au"
+us-east-1 = "va"
+
+[git_branch]
+symbol = "🌱 "
+style = "fg:green"
+truncation_length = 4
+truncation_symbol = ""
+
+[git_commit]
+commit_hash_length = 4
+style = "fg:green"
+tag_symbol = "🔖 "
+
+[docker_context]
+format = "via [🐋 $context](blue bold)"
+
+[rust]
+format = "via [⚙️ $version](red bold)"
+
+[terraform]
+format = "[🏎💨 $version$workspace]($style) "
+
+[time]
+disabled = false
+format = '🕙[\[ $time \]]($style) '
+time_format = "%T"
+utc_time_offset = "-5"
+time_range = "10:00:00-14:00:00"
+
+[username]
+style_user = "white bold"
+style_root = "black bold"
+format = "[$user]($style) "
+disabled = false
+show_always = true
