@@ -88,11 +88,9 @@ antibody bundle zsh-users/zsh-syntax-highlighting
 antibody bundle zsh-users/zsh-completions
 antibody bundle zsh-users/zsh-autosuggestions
 export ENTORNO='host'
-. $HOME/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 autoload -Uz compinit && compinit -i
 fpath=(~/.zsh/completion $fpath)
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
-. /usr/share/powerline/zsh/powerline.zsh
 
 # Import aliases from dotfile
 source ~/.aliases
@@ -114,3 +112,5 @@ export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 # Execute neofetch on startup
 # neofetch
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+# starship:  https://starship.rs/
+eval "$(starship init zsh)"
