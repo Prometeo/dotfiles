@@ -53,20 +53,10 @@ disabled = false
 format = 'on [$symbol$profile(\($region\))]($style) '
 style = "bold blue"
 symbol = "🅰 "
+
 [aws.region_aliases]
 ap-southeast-2 = "au"
 us-east-1 = "va"
-
-[git_branch]
-symbol = "🌱 "
-style = "fg:green"
-truncation_length = 4
-truncation_symbol = ""
-
-[git_commit]
-commit_hash_length = 4
-style = "fg:green"
-tag_symbol = "🔖 "
 
 [docker_context]
 format = "via [🐋 $context](blue bold)"
