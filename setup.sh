@@ -16,6 +16,7 @@ useronly=(
     xmonad
     starship
     bat
+    procs
 )
 
 # run the stow command for the passed in directory ($2) in location $1
