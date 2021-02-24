@@ -9,26 +9,38 @@
 
 --------------- IMPORTS ---------------
 
+-- Base
 import XMonad
-import Data.Monoid
+
 import System.Exit
 import Graphics.X11.ExtraTypes.XF86
-import XMonad.Util.SpawnOnce
-
 import qualified XMonad.StackSet as W
+
+
+-- Data
 import qualified Data.Map        as M
+import Data.Monoid
 
 -- hooks
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.FadeInactive
+
 
 -- actions
 import XMonad.Actions.GridSelect
+import XMonad.Actions.Promote
+import XMonad.Actions.RotSlaves(rotSlavesDown, rotAllDown)
+
+-- utilities
+import XMonad.Util.SpawnOnce
+import XMonad.Util.EZConfig (additionalKeysP)
 
 ------------- END IMPORTS --------------
 
--- The preferred terminal program, which is used in a binding below and by
--- certain contrib modules.
---
+
+------------------- Config -------------------
+
 myTerminal      = "alacritty"
 
 -- Whether focus follows the mouse pointer.
@@ -39,9 +51,8 @@ myFocusFollowsMouse = True
 myClickJustFocuses :: Bool
 myClickJustFocuses = False
 
--- Width of the window border in pixels.
---
-myBorderWidth   = 1
+myBorderWidth :: Dimension
+myBorderWidth = 2
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -50,24 +61,20 @@ myBorderWidth   = 1
 --
 myModMask       = mod4Mask
 
--- The default number of workspaces (virtual screens) and their names.
--- By default we use numeric strings, but any string may be used as a
--- workspace name. The number of workspaces is determined by the length
--- of this list.
---
--- A tagging example:
---
--- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
---
-myWorkspaces    = ["\61728","\59299","爵","4","5","6","7","8","9"]
+-- myNormColor :: String
+-- myNormColor   = "#282c34"  -- Border color of normal windows
+
+-- myFocusColor :: String
+-- myFocusColor  = "#46d9ff"  -- Border color of focused windows
+
+myWorkspaces    = ["term","dev","web","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#ff0000"
+myNormalBorderColor  = "#282c34"
+myFocusedBorderColor = "#d08770"
 
-
-myGridConfig colorizer = (buildDefaultGSConfig colorizer) { gs_cellheight = 30, gs_cellwidth = 100 }
+myAppsGrid = [("Emacs", "emacs"),("Dbeaver", "dbeaver"), ("Steam", "steam"), ("Firefox", "firefox")]
 
 spawnSelected' :: [(String, String)] -> X ()
 spawnSelected' lst = gridselect conf lst >>= flip whenJust spawn
@@ -79,8 +86,10 @@ spawnSelected' lst = gridselect conf lst >>= flip whenJust spawn
                    , gs_originFractY = 0.5
                    }
 
+------------------- End Config -------------------
 
-myAppsGrid = [("Emacs", "emacs"),("Dbeaver", "dbeaver"), ("Steam", "steam"), ("Firefox", "firefox")]
+
+
 
 
 ------------------------------------------------------------------------
@@ -91,30 +100,32 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch a terminal
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
-    -- multimed keys
+    -- multimedia keys
     , ((0, xF86XK_AudioMute), spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
     , ((0, xF86XK_AudioLowerVolume), spawn "pactl set-sink-volume @DEFAULT_SINK@ -10%")
     , ((0, xF86XK_AudioRaiseVolume), spawn "pactl set-sink-volume @DEFAULT_SINK@ +10%")
 
+
     -- menu
     , ((modm,               xK_p     ), spawn "dmenu_run")
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
-    , ((modm, xK_g), spawnSelected' myAppsGrid)
+    , ((modm, xK_g), spawnSelected' myAppsGrid),
 
-    -- close focused window
-    , ((modm .|. shiftMask, xK_c     ), kill)
 
-     -- Rotate through the available layout algorithms
-    , ((modm,               xK_space ), sendMessage NextLayout)
+    -------------------- Windows navigation --------------------
 
-    --  Reset the layouts on the current workspace to default
-    , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
+    ((modm, xK_BackSpace), promote),                              -- Moves focused window to master, others maintain order
+    ((modm, xK_Tab), rotSlavesDown),                              -- Rotate all windows except master and keep focus in place
+    ((modm .|. shiftMask, xK_Tab), rotAllDown),                   -- Rotate all the windows in the current stack
+    ((modm .|. shiftMask, xK_c), kill),                           -- close focused window
+    ((modm, xK_space ), sendMessage NextLayout),                  -- Rotate through the available layout algorithms
+    ((modm, xK_n), refresh),                                      -- Resize viewed windows to the correct size
+    ((modm, xK_j), windows W.focusDown),                          -- Move focus to the next window
 
-    -- Resize viewed windows to the correct size
-    , ((modm,               xK_n     ), refresh)
 
-    -- Move focus to the next window
-    , ((modm,               xK_j     ), windows W.focusDown)
+    ------------------------- Layouts -------------------------
+
+    ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)  -- Reset the layouts on the current workspace to default
 
     -- Move focus to the previous window
     , ((modm,               xK_k     ), windows W.focusUp  )
@@ -263,7 +274,10 @@ myEventHook = mempty
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = return ()
+-- myLogHook = return ()
+myLogHook :: X ()
+myLogHook = fadeInactiveLogHook fadeAmount
+    where fadeAmount = 0.2
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -274,7 +288,7 @@ myLogHook = return ()
 --
 -- By default, do nothing.
 myStartupHook = do
-  spawnOnce "nitrogen --restore"
+  spawnOnce "nitrogen --restore &"
 
 ------------------------------------------------------------------------
 -- Command to launch the bar.
@@ -293,6 +307,7 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 --
 main = xmonad =<< statusBar myBar myPP toggleStrutsKey defaults
 
+
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
 -- use the defaults defined in xmonad/XMonad/Config.hs
@@ -309,6 +324,7 @@ defaults = def {
         workspaces         = myWorkspaces,
         normalBorderColor  = myNormalBorderColor,
         focusedBorderColor = myFocusedBorderColor,
+
 
       -- key bindings
         keys               = myKeys,
