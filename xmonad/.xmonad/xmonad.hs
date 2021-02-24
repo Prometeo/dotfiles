@@ -7,15 +7,24 @@
 -- Normally, you'd only override those defaults you care about.
 --
 
+--------------- IMPORTS ---------------
+
 import XMonad
 import Data.Monoid
 import System.Exit
 import Graphics.X11.ExtraTypes.XF86
-import XMonad.Hooks.DynamicLog
 import XMonad.Util.SpawnOnce
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
+
+-- hooks
+import XMonad.Hooks.DynamicLog
+
+-- actions
+import XMonad.Actions.GridSelect
+
+------------- END IMPORTS --------------
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -57,6 +66,23 @@ myWorkspaces    = ["\61728","\59299","爵","4","5","6","7","8","9"]
 myNormalBorderColor  = "#dddddd"
 myFocusedBorderColor = "#ff0000"
 
+
+myGridConfig colorizer = (buildDefaultGSConfig colorizer) { gs_cellheight = 30, gs_cellwidth = 100 }
+
+spawnSelected' :: [(String, String)] -> X ()
+spawnSelected' lst = gridselect conf lst >>= flip whenJust spawn
+    where conf = def
+                   { gs_cellheight   = 40
+                   , gs_cellwidth    = 200
+                   , gs_cellpadding  = 6
+                   , gs_originFractX = 0.5
+                   , gs_originFractY = 0.5
+                   }
+
+
+myAppsGrid = [("Emacs", "emacs"),("Dbeaver", "dbeaver"), ("Steam", "steam"), ("Firefox", "firefox")]
+
+
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
@@ -65,16 +91,15 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch a terminal
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
-    -- volume keys
+    -- multimed keys
     , ((0, xF86XK_AudioMute), spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
     , ((0, xF86XK_AudioLowerVolume), spawn "pactl set-sink-volume @DEFAULT_SINK@ -10%")
     , ((0, xF86XK_AudioRaiseVolume), spawn "pactl set-sink-volume @DEFAULT_SINK@ +10%")
 
-    -- launch dmenu
+    -- menu
     , ((modm,               xK_p     ), spawn "dmenu_run")
-
-    -- launch gmrun
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
+    , ((modm, xK_g), spawnSelected' myAppsGrid)
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -87,9 +112,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Resize viewed windows to the correct size
     , ((modm,               xK_n     ), refresh)
-
-    -- Move focus to the next window
-    , ((modm,               xK_Tab   ), windows W.focusDown)
 
     -- Move focus to the next window
     , ((modm,               xK_j     ), windows W.focusDown)
