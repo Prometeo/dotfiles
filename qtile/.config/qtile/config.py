@@ -104,25 +104,20 @@ for i in groups:
     ])
 
 layouts = [
-    layout.Columns(border_focus_stack='#d75f5f'),
-    # layout.Max(),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+    # layout.Columns(border_focus_stack='#d75f5f'),
+    layout.MonadTall(
+        border_width=2,
+        border_focus = '#d08770',
+        border_normal='#282c34',
+        single_border_width=0,
+        margin=4
+    ),
 ]
 
 widget_defaults = dict(
     font='Hack Nerd Font',
     fontsize=14,
-    padding=5,
+    margin=5,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -180,7 +175,6 @@ auto_fullscreen = True
 focus_on_window_activation = "smart"
 
 cmd = [
-    "setxkbmap es"
     "picom &",
     "feh --bg-fill "+ home+"/wallpapers/2.jpg"
 ]
