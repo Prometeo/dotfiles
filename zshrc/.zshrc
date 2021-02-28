@@ -80,38 +80,52 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-# source <(antibody init)
-# antibody bundle zsh-users/zsh-syntax-highlighting
-# antibody bundle zsh-users/zsh-completions
-# antibody bundle zsh-users/zsh-autosuggestions
-# export ENTORNO='host'
-# autoload -Uz compinit && compinit -i
-# fpath=(~/.zsh/completion $fpath)
+
+
+#############################  Antigen #############################
+source $HOME/.antigen.zsh
+antigen bundle docker
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+# Tell Antigen that you're done.
+antigen apply
+####################################################################
+
+
+##################################  Rust  ##################################
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+###########################################################################
 
-# Import aliases from dotfile
+######################## Import aliases from dotfile ########################
 source ~/.aliases
+#############################################################################
 
+############################# Functions #############################
 # Create a new directory and enter it
 function mk() {
   mkdir -p "$@" && cd "$@"
 }
-export XAUTHORITY=/home/prometeo/.Xauthority
-export XAUTHORITY=/home/prometeo/.Xauthority
-export WORKON_HOME=~/.virtualenvs
+#####################################################################
+
+############################# PYTHON #############################
+# PYENV
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
       eval "$(pyenv init -)"
 fi
+##################################################################
+
+#############################  PTAHS #############################
 export PATH="$HOME/.local/bin/:$PATH"
-# Execute neofetch on startup
-# neofetch
-[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+##################################################################
+
+########################### Starship ###########################
 # starship:  https://starship.rs/
 eval "$(starship init zsh)"
+################################################################
 
+########################### Brezee ###########################
 [ -s "/home/prometeo/.scm_breeze/scm_breeze.sh" ] && source "/home/prometeo/.scm_breeze/scm_breeze.sh"
+#############################################################
