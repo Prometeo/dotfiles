@@ -141,7 +141,7 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
                 widget.CurrentLayout(),
                 widget.GroupBox(),
@@ -159,7 +159,7 @@ screens = [
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
                 widget.QuickExit(),
             ],
-            24,
+            14,
         ),
     ),
 ]
@@ -193,6 +193,7 @@ auto_fullscreen = True
 focus_on_window_activation = "smart"
 
 cmd = [
+    "numlockx on",
     "picom &",
     "feh --bg-fill "+ home+"/wallpapers/2.jpg"
 ]
