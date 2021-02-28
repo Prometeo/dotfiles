@@ -28,7 +28,7 @@ from typing import List  # noqa: F401
 from pathlib import Path
 import os
 
-from libqtile import bar, layout, widget
+from libqtile import bar, layout, widget, extension
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
@@ -82,20 +82,38 @@ keys = [
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(),
+    Key([mod], "r", lazy.run_extension(extension.DmenuRun()),
         desc="Spawn a command using a prompt widget"),
 ]
 
-groups = [Group(i) for i in "123456789"]
+# groups = [Group(i) for i in ("I", "II", "III", "IV", "V", "VI", "VII", "VII", "IX")]
+__groups = {
+    1: Group("I"),
+    2: Group("II", matches=[Match(wm_class=['emacs'])]),
+    3: Group("III", matches=[Match(wm_class=['firefox'])]),
+    4: Group("IV"),
+    5: Group("V"),
+    6: Group("VI"),
+    7: Group("VII"),
+    8: Group("VIII"),
+    9: Group("IX"),    
+}
+
+groups = [__groups[i] for i in __groups]
+
+def get_group_key(name):
+    return [k for k, g in __groups.items() if g.name == name][0]
+
+
 
 for i in groups:
     keys.extend([
         # mod1 + letter of group = switch to group
-        Key([mod], i.name, lazy.group[i.name].toscreen(),
+        Key([mod], str(get_group_key(i.name)), lazy.group[i.name].toscreen(),
             desc="Switch to group {}".format(i.name)),
 
         # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True),
+        Key([mod, "shift"], str(get_group_key(i.name)), lazy.window.togroup(i.name, switch_group=True),
             desc="Switch to & move focused window to group {}".format(i.name)),
         # Or, use below if you prefer not to switch to that group.
         # # mod1 + shift + letter of group = move focused window to group
