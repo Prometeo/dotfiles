@@ -83,13 +83,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source <(antibody init)
-antibody bundle zsh-users/zsh-syntax-highlighting
-antibody bundle zsh-users/zsh-completions
-antibody bundle zsh-users/zsh-autosuggestions
-export ENTORNO='host'
-autoload -Uz compinit && compinit -i
-fpath=(~/.zsh/completion $fpath)
+# source <(antibody init)
+# antibody bundle zsh-users/zsh-syntax-highlighting
+# antibody bundle zsh-users/zsh-completions
+# antibody bundle zsh-users/zsh-autosuggestions
+# export ENTORNO='host'
+# autoload -Uz compinit && compinit -i
+# fpath=(~/.zsh/completion $fpath)
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # Import aliases from dotfile
@@ -108,9 +108,10 @@ if command -v pyenv 1>/dev/null 2>&1; then
       eval "$(pyenv init -)"
 fi
 export PATH="$HOME/.local/bin/:$PATH"
-export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 # Execute neofetch on startup
 # neofetch
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 # starship:  https://starship.rs/
 eval "$(starship init zsh)"
+
+[ -s "/home/prometeo/.scm_breeze/scm_breeze.sh" ] && source "/home/prometeo/.scm_breeze/scm_breeze.sh"
