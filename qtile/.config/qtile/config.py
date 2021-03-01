@@ -34,9 +34,18 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
 # Vars
+
 mod = "mod4"
 terminal = "alacritty"
 home = str(Path.home())
+colors = {
+    "night": ("#2e3440", "#3b4252", "#434c5e", "#4c566a"),
+    "storm": ("#d8dee9", "#e5e9f0", "#eceff4"),
+    "frost": ("#8fbcbb", "#88c0d0", "#81a1c1", "#5e81ac"),
+    "aurora": ("#bf616a", "#d08770", "#ebcb8b", "#a3be8c", "#b48ead")
+}
+
+# End Vars
 
 keys = [
     # volume
@@ -87,8 +96,7 @@ keys = [
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.run_extension(extension.DmenuRun()),
-        desc="Spawn a command using a prompt widget"),
+    Key([mod], "r", lazy.spawn('rofi -show run')),
 ]
 
 # groups = [Group(i) for i in ("I", "II", "III", "IV", "V", "VI", "VII", "VII", "IX")]
@@ -110,7 +118,6 @@ def get_group_key(name):
     return [k for k, g in __groups.items() if g.name == name][0]
 
 
-
 for i in groups:
     keys.extend([
         # mod1 + letter of group = switch to group
@@ -127,11 +134,9 @@ for i in groups:
     ])
 
 layouts = [
-    # layout.Columns(border_focus_stack='#d75f5f'),
     layout.MonadTall(
         border_width=2,
-        border_focus = '#d08770',
-        border_normal='#282c34',
+        border_focus = colors['aurora'][2],
         single_border_width=0,
         margin=4
     ),
@@ -148,20 +153,44 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
+                # widget.CurrentLayout(),
+                widget.Sep(linewidth = 0,padding = 6),
+                widget.GroupBox(
+                    hide_unused=True,
+                    disable_drag=True,
+                    active=colors['storm'][2],
+                    block_highlight_text_color=colors['aurora'][3],
+                    highlight_method='block',
+                ),
                 widget.Prompt(),
-                widget.WindowName(),
+                widget.WindowName(
+                    foreground = colors['frost'][3],
+                    padding = 0,
+                ),
+                widget.CPU(
+                    foreground=colors['aurora'][4]
+                ),
+                widget.CheckUpdates(),
+                widget.Memory(
+                    foreground=colors['aurora'][2]
+                ),
+                widget.Net(
+                    interface="enp30s0",
+                    format="{down}↓ {up}↑",
+                    foreground=colors['frost'][0]
+                ),
                 widget.Chord(
                     chords_colors={
                         'launch': ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 widget.Systray(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+                widget.Clock(format='%d-%m-%Y %a %I:%M %p',foreground=colors['aurora'][0]),
+                widget.Volume(
+                    padding = 5,
+                    emoji=True
+                ),
                 widget.QuickExit(),
             ],
             24,
