@@ -103,19 +103,19 @@ font:
     style: Retina
 
   bold:
-    family: "Iosevka"
+    family: "FiraCode Nerd Font"
     tyle: Bold
 
   italic:
-    family: "Iosevka"
+    family: "FiraCode Nerd Font"
     style: Italic
 
   bold_italic:
-    family: "Iosevka"
+    family: "FiraCode Nerd Font"
     style: Bold Italic
 
   # Point size
-  size: 10.0
+  size: 7.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
