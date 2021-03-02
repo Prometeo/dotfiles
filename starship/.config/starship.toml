@@ -27,19 +27,10 @@ format = "took [$duration]($style)"
 success_symbol = "[➜](bold green) "
 error_symbol = "[✗](bold red) "
 
-# These symbols will only show when battery levels are 20% or less
-[battery]
-charging_symbol = "⚡️ "
-discharging_symbol = "💀 "
-
-[[battery.display]]  # "bold red" style when capacity is between 0% and 20%
-threshold = 20
-style = "bold red"
-
 # Clear visibility for exit codes
 [status]
 style = "bg:red"
-symbol = "💣 "
+symbol = " "
 format = '[\[$symbol$status\]]($style) '
 disabled = false
 
@@ -59,13 +50,14 @@ ap-southeast-2 = "au"
 us-east-1 = "va"
 
 [docker_context]
-format = "via [🐋 $context](blue bold)"
+format = "via [ $context](blue bold)"
 
 [rust]
-format = "via [⚙️ $version](red bold)"
+format = "via [$version](red bold)"
 
-[terraform]
-format = "[🏎💨 $version$workspace]($style) "
+[python]
+symbol = " "
+pyenv_version_name = true
 
 [username]
 style_user = "white bold"
