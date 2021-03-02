@@ -36,7 +36,7 @@ from libqtile.utils import guess_terminal
 # Vars
 
 mod = "mod4"
-terminal = "alacritty"
+my_terminal = "alacritty"
 home = str(Path.home())
 colors = {
     "night": ("#2e3440", "#3b4252", "#434c5e", "#4c566a"),
@@ -48,55 +48,64 @@ colors = {
 # End Vars
 
 keys = [
-    # volume
+    # Launch terminal, kill window, restart and exit Qtile
+    Key([mod], "Return", lazy.spawn(my_terminal), desc="Launch terminal"),
+    Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod], "Escape", lazy.spawn('xkill'), desc="Select and kill a window"),
+    Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
+    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+
+    # Multimedia
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%")),
-    
-    # Switch between windows
-    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
-    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn(
+        "amixer -D pulse sset Master 5%-")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn(
+        "amixer -D pulse sset Master 5%+")),
+
+    # Dmenu, rofi
+    Key([mod], "r", lazy.spawn('rofi -show run')),
+
+    # Working with windows
+    Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
+    Key([mod], "Right", lazy.layout.right(), desc="Move focus to right"),
+    Key([mod], "Down", lazy.layout.down(), desc="Move focus down"),
+    Key([mod], "Up", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "space", lazy.layout.next(),
         desc="Move window focus to other window"),
 
-    # Move windows between left/right columns or move up/down in current stack.
-    # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(),
+    Key([mod, "shift"], "Left", lazy.layout.shuffle_left(),
         desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(),
+    Key([mod, "shift"], "Right", lazy.layout.shuffle_right(),
         desc="Move window to the right"),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down(),
+    Key([mod, "shift"], "Down", lazy.layout.shuffle_down(),
         desc="Move window down"),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
+    Key([mod, "shift"], "Up", lazy.layout.shuffle_up(), desc="Move window up"),
 
-    # Grow windows. If current window is on the edge of screen and direction
-    # will be to screen edge - window would shrink.
-    Key([mod, "control"], "h", lazy.layout.grow_left(),
-        desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(),
-        desc="Grow window to the right"),
-    Key([mod, "control"], "j", lazy.layout.grow_down(),
-        desc="Grow window down"),
-    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
 
-    # Toggle between split and unsplit sides of stack.
-    # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack"),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    # Resize layout
+    Key([mod, "control"], "Right",
+        lazy.layout.grow_right(),
+        lazy.layout.grow(),
+        lazy.layout.increase_ratio(),
+        lazy.layout.delete(),
+        ),
+    Key([mod, "control"], "Left",
+        lazy.layout.grow_left(),
+        lazy.layout.shrink(),
+        lazy.layout.decrease_ratio(),
+        lazy.layout.add(),
+        ),
+    Key([mod, "control"], "Up",
+        lazy.layout.grow_up(),
+        lazy.layout.grow(),
+        lazy.layout.decrease_nmaster(),
+        ),
+    Key([mod, "control"], "Down",
+        lazy.layout.grow_down(),
+        lazy.layout.shrink(),
+        lazy.layout.increase_nmaster(),
+        ),
 
-    # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
-
-    Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawn('rofi -show run')),
 ]
 
 # groups = [Group(i) for i in ("I", "II", "III", "IV", "V", "VI", "VII", "VII", "IX")]
@@ -109,10 +118,11 @@ __groups = {
     6: Group("VI"),
     7: Group("VII"),
     8: Group("VIII"),
-    9: Group("IX"),    
+    9: Group("IX"),
 }
 
 groups = [__groups[i] for i in __groups]
+
 
 def get_group_key(name):
     return [k for k, g in __groups.items() if g.name == name][0]
@@ -136,7 +146,7 @@ for i in groups:
 layouts = [
     layout.MonadTall(
         border_width=2,
-        border_focus = colors['aurora'][2],
+        border_focus=colors['aurora'][2],
         single_border_width=0,
         margin=4
     ),
@@ -154,7 +164,7 @@ screens = [
         top=bar.Bar(
             [
                 # widget.CurrentLayout(),
-                widget.Sep(linewidth = 0,padding = 6),
+                widget.Sep(linewidth=0, padding=6),
                 widget.GroupBox(
                     hide_unused=True,
                     disable_drag=True,
@@ -164,8 +174,8 @@ screens = [
                 ),
                 widget.Prompt(),
                 widget.WindowName(
-                    foreground = colors['frost'][3],
-                    padding = 0,
+                    foreground=colors['frost'][3],
+                    padding=0,
                 ),
                 widget.CPU(
                     foreground=colors['aurora'][4]
@@ -186,9 +196,10 @@ screens = [
                     name_transform=lambda name: name.upper(),
                 ),
                 widget.Systray(),
-                widget.Clock(format='%d-%m-%Y %a %I:%M %p',foreground=colors['aurora'][0]),
+                widget.Clock(format='%d-%m-%Y %a %I:%M %p',
+                             foreground=colors['aurora'][0]),
                 widget.Volume(
-                    padding = 5,
+                    padding=5,
                     emoji=True
                 ),
                 widget.QuickExit(),
@@ -231,7 +242,7 @@ focus_on_window_activation = "smart"
 cmd = [
     "numlockx on",
     "picom &",
-    "feh --bg-fill "+ home+"/wallpapers/2.jpg"
+    "feh --bg-fill " + home+"/wallpapers/2.jpg"
 ]
 
 for i in cmd:
