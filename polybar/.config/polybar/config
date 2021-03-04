@@ -67,7 +67,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm i3
 ; modules-center = mpd
-modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu eth temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -218,12 +218,11 @@ label = %date% %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
-
+sink = alsa_output.pci-0000_38_00.6.analog-stereo
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted = 🔇 muted
 label-muted-foreground = #666
 
 bar-volume-width = 10
