@@ -22,13 +22,13 @@ alias gs="git status"
 alias gc="git commit"
 alias gp="git push"
 alias gd="git diff"
+alias gfl="git flow"
 
 # python
-alias pipf="pip3 install jedi black autopep8 yapf rope flake8 pysort"
-
+# alias pipf="pip3 install jedi black autopep8 yapf rope flake8 pysort"
+alias pipf="pip install 'python-language-server[all]' python-language-server pip install pyls-black pyls-isort pyls-mypy"
 # bat & cat
 alias cat="bat"
-alias ocat="cat"
 
 # exa
 alias exalh="exa --long --header"
