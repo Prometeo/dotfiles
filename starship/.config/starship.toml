@@ -53,6 +53,7 @@ us-east-1 = "va"
 format = "via [ $context](blue bold)"
 
 [rust]
+symbol = " "
 format = "via [$version](red bold)"
 
 [python]
