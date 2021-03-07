@@ -25,8 +25,7 @@ alias gd="git diff"
 alias gfl="git flow"
 
 # python
-# alias pipf="pip3 install jedi black autopep8 yapf rope flake8 pysort"
-alias pipf="pip install 'python-language-server[all]' python-language-server pip install pyls-black pyls-isort pyls-mypy"
+alias pipf="pip3 install jedi black autopep8 yapf rope flake8 pysort"
 # bat & cat
 alias cat="bat"
 
