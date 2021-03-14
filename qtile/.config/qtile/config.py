@@ -48,12 +48,13 @@ colors = {
 # End Vars
 
 keys = [
-    # Launch terminal, kill window, restart and exit Qtile
+    # Launch terminal, kill window, restart and exit Qtile, session
     Key([mod], "Return", lazy.spawn(my_terminal), desc="Launch terminal"),
     Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod], "Escape", lazy.spawn('xkill'), desc="Select and kill a window"),
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod], "x", lazy.spawn('arcolinux-logout')),
 
     # Multimedia
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
