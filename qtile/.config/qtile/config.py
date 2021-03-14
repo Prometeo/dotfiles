@@ -72,6 +72,9 @@ keys = [
     Key([mod], "Up", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "space", lazy.layout.next(),
         desc="Move window focus to other window"),
+    Key([mod], "f", lazy.window.toggle_floating(), desc="Make window floating"),
+    Key([mod, "shift"], "f", lazy.window.toggle_fullscreen(),
+        desc="Make window full screen"),
 
     Key([mod, "shift"], "Left", lazy.layout.shuffle_left(),
         desc="Move window to the left"),
@@ -80,6 +83,7 @@ keys = [
     Key([mod, "shift"], "Down", lazy.layout.shuffle_down(),
         desc="Move window down"),
     Key([mod, "shift"], "Up", lazy.layout.shuffle_up(), desc="Move window up"),
+
 
 
     # Resize layout
@@ -157,9 +161,9 @@ widget_defaults = dict(
     fontsize=14,
     margin=5,
 )
-extension_defaults = widget_defaults.copy()
+extension_defaults=widget_defaults.copy()
 
-screens = [
+screens=[
     Screen(
         top=bar.Bar(
             [
@@ -212,7 +216,7 @@ screens = [
 ]
 
 # Drag floating layouts.
-mouse = [
+mouse=[
     Drag([mod], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(),
@@ -220,13 +224,13 @@ mouse = [
     Click([mod], "Button2", lazy.window.bring_to_front())
 ]
 
-dgroups_key_binder = None
-dgroups_app_rules = []  # type: List
-main = None  # WARNING: this is deprecated and will be removed soon
-follow_mouse_focus = True
-bring_front_click = False
-cursor_warp = False
-floating_layout = layout.Floating(float_rules=[
+dgroups_key_binder=None
+dgroups_app_rules=[]  # type: List
+main=None  # WARNING: this is deprecated and will be removed soon
+follow_mouse_focus=True
+bring_front_click=False
+cursor_warp=False
+floating_layout=layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
     *layout.Floating.default_float_rules,
     Match(wm_class='confirmreset'),  # gitk
@@ -236,10 +240,10 @@ floating_layout = layout.Floating(float_rules=[
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
 ])
-auto_fullscreen = True
-focus_on_window_activation = "smart"
+auto_fullscreen=True
+focus_on_window_activation="smart"
 
-cmd = [
+cmd=[
     "numlockx on",
     "picom &",
     "feh --bg-fill " + home+"/wallpapers/2.jpg"
@@ -256,4 +260,4 @@ for i in cmd:
 #
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
-wmname = "LG3D"
+wmname="LG3D"
