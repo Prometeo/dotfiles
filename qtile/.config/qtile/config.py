@@ -27,6 +27,7 @@
 from typing import List  # noqa: F401
 from pathlib import Path
 import os
+import random
 
 from libqtile import bar, layout, widget, extension
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
@@ -38,6 +39,9 @@ from libqtile.utils import guess_terminal
 mod = "mod4"
 my_terminal = "alacritty"
 home = str(Path.home())
+wallpapers_dir = home + "/wallpapers/"
+wallpaper = wallpapers_dir + random.choice(os.listdir(wallpapers_dir))
+
 colors = {
     "night": ("#2e3440", "#3b4252", "#434c5e", "#4c566a"),
     "storm": ("#d8dee9", "#e5e9f0", "#eceff4"),
@@ -247,7 +251,7 @@ focus_on_window_activation = "smart"
 cmd = [
     "numlockx on",
     "picom &",
-    "feh --bg-fill " + home+"/wallpapers/0010.jpg"
+    "feh --bg-fill " + wallpaper
 ]
 
 for i in cmd:
