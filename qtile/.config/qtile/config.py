@@ -29,13 +29,12 @@ from pathlib import Path
 import os
 import random
 
-from libqtile import bar, layout, widget, extension
+from libqtile import bar, layout, widget, extension, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
 # Vars
-
 mod = "mod4"
 my_terminal = "alacritty"
 home = str(Path.home())
@@ -189,10 +188,15 @@ screens = [
                 widget.CPU(
                     foreground=colors['aurora'][4]
                 ),
-                widget.CheckUpdates(),
-                widget.Memory(
-                    foreground=colors['aurora'][2]
+                widget.CheckUpdates(
+                    update_interval=600,
+                    distro="Arch_checkupdates",
+                    display_format="{updates} Updates",
+                    foreground=colors['aurora'][0],
+                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(
+                        my_terminal + ' -e sudo pacman -Syu')},
                 ),
+
                 widget.Net(
                     interface="enp30s0",
                     format="{down}↓ {up}↑",
