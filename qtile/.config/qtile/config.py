@@ -51,6 +51,12 @@ colors = {
 # End Vars
 
 keys = [
+    # Monitors
+    # Switch focus to specific monitor
+    Key([mod], "w", lazy.to_screen(0), desc='Keyboard focus to monitor 1'),
+    Key([mod], "e", lazy.to_screen(1), desc='Keyboard focus to monitor 2'),
+
+
     # Launch terminal, kill window, restart and exit Qtile, session
     Key([mod], "Return", lazy.spawn(my_terminal), desc="Launch terminal"),
     Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
@@ -116,7 +122,6 @@ keys = [
 
 ]
 
-# groups = [Group(i) for i in ("I", "II", "III", "IV", "V", "VI", "VII", "VII", "IX")]
 __groups = {
     1: Group("I"),
     2: Group("II", matches=[Match(wm_class=['emacs'])]),
