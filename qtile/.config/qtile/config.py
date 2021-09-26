@@ -85,7 +85,6 @@ keys = [
     Key([mod], "f", lazy.window.toggle_floating(), desc="Make window floating"),
     Key([mod, "shift"], "f", lazy.window.toggle_fullscreen(),
         desc="Make window full screen"),
-
     Key([mod, "shift"], "Left", lazy.layout.shuffle_left(),
         desc="Move window to the left"),
     Key([mod, "shift"], "Right", lazy.layout.shuffle_right(),
@@ -94,6 +93,9 @@ keys = [
         desc="Move window down"),
     Key([mod, "shift"], "Up", lazy.layout.shuffle_up(), desc="Move window up"),
 
+    # Lockscreen
+    Key([mod, "shift"], "l", lazy.spawn("betterlockscreen -l dim"),
+        desc="Lockscreen with betterlockscreen"),
 
 
     # Resize layout
