@@ -50,15 +50,23 @@ ap-southeast-2 = "au"
 us-east-1 = "va"
 
 [docker_context]
-format = "via [ $context](blue bold)"
-
-[rust]
-symbol = " "
-format = "via [$version](red bold)"
+format = "via [ $context](blue bold) "
 
 [python]
 symbol = " "
+style = "bold green"
+format = "[$symbol$version]($style) "
 pyenv_version_name = true
+version_format = "v$major"
+pyenv_prefix = "pyenv"
+
+
+[rust]
+symbol = "rust "
+style = "bold red"
+format = "[$symbol$version]($style) "
+version_format = "v$major"
+
 
 [username]
 style_user = "white bold"

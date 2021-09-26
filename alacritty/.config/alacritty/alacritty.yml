@@ -101,8 +101,6 @@ font:
   normal:
     family: "FiraCode Nerd Font"
     style: Retina
-    # family: Source Code Pro
-    # style: Regular
 
   bold:
     family: "FiraCode Nerd Font"
