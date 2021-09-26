@@ -133,3 +133,6 @@ eval "$(starship init zsh)"
 ########################### Brezee ###########################
 [ -s "/home/prometeo/.scm_breeze/scm_breeze.sh" ] && source "/home/prometeo/.scm_breeze/scm_breeze.sh"
 #############################################################
+###################### English dead keys ###############################
+setxkbmap -layout eu
+#####################################################################
