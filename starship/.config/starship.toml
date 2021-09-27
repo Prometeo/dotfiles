@@ -60,13 +60,11 @@ pyenv_version_name = true
 version_format = "v$major"
 pyenv_prefix = "pyenv"
 
-
 [rust]
 symbol = "rust "
 style = "bold red"
 format = "[$symbol$version]($style) "
 version_format = "v$major"
-
 
 [username]
 style_user = "white bold"
