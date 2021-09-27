@@ -39,3 +39,6 @@ HISTCONTROL=ignoreboth:erasedups # do not save duplicate commands:erase previous
 
 # Ripgrep
 alias grep="rg"
+
+# zellij
+alias zellijl="zellij --layout-path"
