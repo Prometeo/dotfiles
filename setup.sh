@@ -22,6 +22,7 @@ useronly=(
     sxhkd
     polybar
     zellij
+    nushell
     pycodestyle
 )
 
