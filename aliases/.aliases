@@ -42,3 +42,6 @@ alias grep="rg"
 
 # zellij
 alias zellijl="zellij --layout-path"
+
+# emacs  client
+alias emacs="emacsclient -c -a 'emacs'"
