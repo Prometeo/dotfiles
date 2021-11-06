@@ -262,7 +262,8 @@ focus_on_window_activation = "smart"
 cmd = [
     "numlockx on",
     "picom &",
-    "feh --bg-fill " + wallpaper
+    "feh --bg-fill " + wallpaper,
+    "/usr/bin/emacs --daemon &",
 ]
 
 for i in cmd:
