@@ -67,10 +67,10 @@ keys = [
 
     # Multimedia
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn(
-        "amixer -D pulse sset Master 5%-")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn(
-        "amixer -D pulse sset Master 5%+")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse sset Master 5%-")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D pulse sset Master 5%+")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10-")),
 
     # Dmenu, rofi
     Key([mod], "r", lazy.spawn('rofi -show run')),
@@ -218,10 +218,8 @@ screens = [
                 widget.Systray(),
                 widget.Clock(format='%d-%m-%Y %a %I:%M %p',
                              foreground=colors['aurora'][0]),
-                widget.Volume(
-                    padding=5,
-                    emoji=True
-                ),
+                widget.Volume(padding=5,emoji=True),
+                widget.BatteryIcon(),
                 widget.QuickExit(),
             ],
             24,
@@ -263,7 +261,7 @@ cmd = [
     "numlockx on",
     "picom &",
     "feh --bg-fill " + wallpaper,
-    "/usr/bin/emacs --daemon &",
+    # "/usr/bin/emacs --daemon &",
 ]
 
 for i in cmd:
