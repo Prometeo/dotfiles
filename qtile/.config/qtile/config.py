@@ -203,7 +203,6 @@ screens = [
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(
                         my_terminal + ' -e sudo pacman -Syu')},
                 ),
-
                 widget.Net(
                     interface="enp30s0",
                     format="{down}↓ {up}↑",
