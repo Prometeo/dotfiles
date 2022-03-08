@@ -193,7 +193,11 @@ screens = [
                     padding=0,
                 ),
                 widget.CPU(
-                    foreground=colors['aurora'][4]
+                    foreground=colors['aurora'][4],
+                    update_interval=2,
+                    mouse_callbacks={
+                        'Button1': lambda: qtile.cmd_spawn(f"{my_terminal} -e bpytop")
+                    }
                 ),
                 widget.CheckUpdates(
                     update_interval=600,
@@ -217,7 +221,7 @@ screens = [
                 widget.Systray(),
                 widget.Clock(format='%d-%m-%Y %a %I:%M %p',
                              foreground=colors['aurora'][0]),
-                widget.Volume(padding=5,emoji=True),
+                widget.Volume(padding=5, emoji=True),
                 widget.BatteryIcon(),
                 widget.QuickExit(),
             ],
