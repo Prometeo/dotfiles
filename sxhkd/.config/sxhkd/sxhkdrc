@@ -58,18 +58,11 @@ super + g
 super + {t,shift + t,s,f}
     bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
-# set the node flags
-# super + ctrl + {m,x,y,z}
-#     bspc node -g {marked,locked,sticky,private}
-
 #
 # focus/swap
 #
 
 # focus the node in the given direction
-#super + {_,shift + }{h,j,k,l}
-#	bspc node -{f,s} {west,south,north,east}
-
 super + {_,shift + }{Left,Down,Up,Right}
        bspc node -{f,s} {west,south,north,east}
 
@@ -126,7 +119,7 @@ super + ctrl + alt + space
 #
 
 expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
+super + alt + {Left,Down,Up,R}
     bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
@@ -146,12 +139,10 @@ super + ctrl + {Left,Down,Up,Right}
 # CUSTOM
 # ---------------------------------------------
 
-# Google-Chrome
+# Lock the screen
+super + shift + l
+      betterlockscreen -l dim
 
-# super + shift + g
-#     google-chrome
-
-# # Open Burpsuite Professional
-
-# super + ctrl + b
-#     gksudo burp
+# archlinux-logout
+super + shift + s
+      archlinux-logout

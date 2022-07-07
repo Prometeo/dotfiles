@@ -24,6 +24,7 @@ useronly=(
     zellij
     nushell
     pycodestyle
+    picom
 )
 
 # run the stow command for the passed in directory ($2) in location $1
