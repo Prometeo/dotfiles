@@ -119,6 +119,7 @@ label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/bspwm]
 type = internal/bspwm
+pin-workspaces = true
 
 format = <label-state> <label-mode>
 
@@ -363,4 +364,9 @@ screenchange-reload = true
 margin-top = 5
 margin-bottom = 5
 
-; vim:ft=dosini
+[bar/top]
+bottom = false
+monitor = HDMI-A-0
+
+[bar/top_external]
+bottom = false
