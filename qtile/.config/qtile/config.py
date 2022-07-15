@@ -36,10 +36,10 @@ from libqtile.utils import guess_terminal
 
 # Vars
 mod = "mod4"
-my_terminal = "alacritty"
+# my_terminal = "alacritty"
 home = str(Path.home())
-wallpapers_dir = home + "/wallpapers/"
-wallpaper = wallpapers_dir + random.choice(os.listdir(wallpapers_dir))
+# wallpapers_dir = home + "/wallpapers/"
+# wallpaper = wallpapers_dir + random.choice(os.listdir(wallpapers_dir))
 
 colors = {
     "night": ("#2e3440", "#3b4252", "#434c5e", "#4c566a"),
@@ -58,7 +58,7 @@ keys = [
 
 
     # Launch terminal, kill window, restart and exit Qtile, session
-    Key([mod], "Return", lazy.spawn(my_terminal), desc="Launch terminal"),
+    # Key([mod], "Return", lazy.spawn(my_terminal), desc="Launch terminal"),
     Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod], "Escape", lazy.spawn('xkill'), desc="Select and kill a window"),
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
@@ -261,9 +261,9 @@ auto_fullscreen = True
 focus_on_window_activation = "smart"
 
 cmd = [
-    "numlockx on",
-    "picom &",
-    "feh --bg-fill " + wallpaper,
+    # "numlockx on",
+    # "picom &",
+    # "feh --bg-fill " + wallpaper,
     # "/usr/bin/emacs --daemon &",
 ]
 
