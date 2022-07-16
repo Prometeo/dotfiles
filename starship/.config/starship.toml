@@ -54,6 +54,7 @@ format = "via [ $context](blue bold) "
 
 [python]
 symbol = " "
+# symbol = "🐍 "
 style = "bold green"
 format = "[$symbol$version]($style) "
 pyenv_version_name = true
@@ -61,7 +62,7 @@ version_format = "v$major"
 pyenv_prefix = "pyenv"
 
 [rust]
-symbol = "rust "
+symbol = "🦀 "
 style = "bold red"
 format = "[$symbol$version]($style) "
 version_format = "v$major"
