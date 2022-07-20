@@ -67,8 +67,8 @@ keys = [
 
     # Multimedia
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse sset Master 5%-")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D pulse sset Master 5%+")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D default sset Master 5%-")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D default sset Master 5%+")),
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10-")),
 
