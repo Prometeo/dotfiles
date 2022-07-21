@@ -73,7 +73,7 @@ keys = [
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10-")),
 
     # Dmenu, rofi
-    Key([mod], "r", lazy.spawn('rofi -show run')),
+    Key([mod], "r", lazy.spawn("rofi -show run -display-run '>_'")),
 
     # Working with windows
     Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
