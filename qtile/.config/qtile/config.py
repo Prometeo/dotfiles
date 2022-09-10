@@ -67,8 +67,8 @@ keys = [
 
     # Multimedia
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D default sset Master 3%-")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D default sset Master 3%+")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D default sset Master 2%-")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D default sset Master 2%+")),
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10-")),
 
@@ -221,7 +221,7 @@ screens = [
                 widget.Systray(),
                 widget.Clock(format='%d-%m-%Y %a %I:%M %p',
                              foreground=colors['aurora'][0]),
-                widget.Volume(padding=3, emoji=True),
+                widget.Volume(padding=2, emoji=True),
                 widget.BatteryIcon(),
                 widget.QuickExit(),
             ],
@@ -264,6 +264,7 @@ cmd = [
     # "numlockx on",
     "picom &",
     "feh --bg-fill " + wallpaper,
+    "xscreensaver -no-splash &",
 ]
 
 for i in cmd:
