@@ -25,7 +25,7 @@ alias gd="git diff"
 alias gfl="git flow"
 
 # python
-alias pipf="pip3 install jedi black autopep8 yapf rope flake8 pysort python-lsp-server"
+alias pipf="pip3 install jedi black autopep8 yapf rope flake8 pysort pyright"
 # bat & cat
 alias cat="bat"
 
@@ -42,6 +42,3 @@ alias grep="rg"
 
 # zellij
 alias zellijl="zellij --layout-path"
-
-# emacs  client
-# alias emacs="emacsclient -c -a 'emacs'"
