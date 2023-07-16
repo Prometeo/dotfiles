@@ -1,0 +1,15 @@
+[submodule "forgit"]
+	path = forgit
+	url = https://github.com/wfxr/forgit.git
+[submodule "zshrc/modules/forgit"]
+	path = zshrc/modules/forgit
+	url = https://github.com/wfxr/forgit.git
+[submodule "zshrc/modules/zsh-autosuggestions"]
+	path = zshrc/modules/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "zshrc/modules/zsh-completions"]
+	path = zshrc/modules/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
+[submodule "zshrc/modules/zsh-syntax-highlighting"]
+	path = zshrc/modules/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
