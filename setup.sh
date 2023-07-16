@@ -10,21 +10,17 @@ useronly=(
     alacritty
     aliases
     bat
-    bspwm
+#    bspwm
     jsbeautifyrc
-    nushell
-    picom
-    polybar
+#    nushell
+#    picom
+#    polybar
     procs
     pycodestyle
-    qtile
-    rofi-theme
-    rofi
+#    qtile
+#    rofi-theme
+#    rofi
     starship
-    sxhkd
-    tmux
-    xmobar
-    xmonad
     zellij
     zshrc
 )
