@@ -17,9 +17,9 @@ useronly=(
 #    polybar
     procs
     pycodestyle
-#    qtile
-#    rofi-theme
-#    rofi
+    qtile
+    rofi-theme
+    rofi
     starship
     zellij
     zshrc

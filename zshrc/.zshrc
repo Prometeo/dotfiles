@@ -78,18 +78,6 @@
 # For a full list of active aliases, run `alias`.
 #
 
-
-#############################  Antigen #############################
-source $HOME/.antigen.zsh
-antigen bundle docker
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-autosuggestions
-# Tell Antigen that you're done.
-antigen apply
-####################################################################
-
-
 ##################################  Rust  ##################################
 export PATH=$PATH:~/.cargo/bin/
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
@@ -137,5 +125,11 @@ eval "$(starship init zsh)"
 setxkbmap -layout eu
 #####################################################################
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+#################### Enable ctrl arrows ####################
+bindkey -e
+bindkey ";5C" forward-word
+bindkey ";5D" backward-word
+
+################ Case insensitive completions ################
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'

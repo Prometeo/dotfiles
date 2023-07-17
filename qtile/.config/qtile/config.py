@@ -127,7 +127,7 @@ keys = [
 __groups = {
     1: Group("I"),
     2: Group("II", matches=[Match(wm_class=['emacs'])]),
-    3: Group("III", matches=[Match(wm_class=['firefox'])]),
+    3: Group("III", matches=[Match(wm_class=['firefox','brave-browser'])]),
     4: Group("IV"),
     5: Group("V"),
     6: Group("VI"),
