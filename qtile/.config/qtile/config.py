@@ -222,7 +222,6 @@ screens = [
                 widget.Clock(format='%d-%m-%Y %a %I:%M %p',
                              foreground=colors['aurora'][0]),
                 widget.Volume(padding=2, emoji=True),
-                widget.BatteryIcon(),
                 widget.QuickExit(),
             ],
             24,
