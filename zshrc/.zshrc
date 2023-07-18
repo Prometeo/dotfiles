@@ -78,6 +78,21 @@
 # For a full list of active aliases, run `alias`.
 #
 
+################################## PLUGINS ##################################
+autoload -Uz compinit
+compinit
+
+[ -s "/Users/prometeo/.scm_breeze/scm_breeze.sh" ] && source "/Users/prometeo/.scm_breeze/scm_breeze.sh"
+source $HOME/dotfiles/zshrc/modules/forgit/forgit.plugin.zsh
+source $HOME/dotfiles/zshrc/modules/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source $HOME/dotfiles/zshrc/modules/zsh-completions/zsh-completions.plugin.zsh
+source $HOME/dotfiles/zshrc/modules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/dotfiles/zshrc/modules/aliases/aliases.plugin.zsh
+
+#############################################################################
+
+
+
 ##################################  Rust  ##################################
 export PATH=$PATH:~/.cargo/bin/
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
@@ -131,5 +146,4 @@ bindkey ";5C" forward-word
 bindkey ";5D" backward-word
 
 ################ Case insensitive completions ################
-autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
