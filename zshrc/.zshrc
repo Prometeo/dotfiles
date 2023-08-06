@@ -147,3 +147,8 @@ bindkey ";5D" backward-word
 
 ################ Case insensitive completions ################
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
