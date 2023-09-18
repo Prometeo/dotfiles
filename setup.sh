@@ -10,19 +10,16 @@ useronly=(
     alacritty
     aliases
     bat
-#    bspwm
     jsbeautifyrc
-#    nushell
-#    picom
-#    polybar
     procs
     pycodestyle
     qtile
     rofi-theme
     rofi
     starship
-    zellij
+    # zellij
     bashrc
+    hypr
 )
 
 # run the stow command for the passed in directory ($2) in location $1
