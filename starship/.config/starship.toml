@@ -4,11 +4,27 @@
 # [│](bold green)$directory$rust$package
 # [└─>](bold green) """
 
+format = """
+$os\
+$username\
+$hostname\
+$shlvl\
+$directory\
+$python\
+$rust\
+$aws\
+$docker_context\
+$git_branch\
+$git_status\
+$git_state\
+$character\
+"""
+
 # Wait 10 milliseconds for starship to check files under the current directory.
 scan_timeout = 10
 
 # Disable the newline at the start of the prompt
-add_newline = false
+add_newline = true
 
 # makes prompt a single line
 [line_break]
@@ -16,7 +32,7 @@ disabled = true
 
 # Disable the package module, hiding it from the prompt completely
 [package]
-disabled = true
+disabled = false
 
 # Show command duration over 10,000 milliseconds (= 10 sec)
 [cmd_duration]
@@ -24,8 +40,22 @@ min_time = 10_000
 format = "took [$duration]($style)"
 
 [character]
-success_symbol = "[➜](bold green) "
-error_symbol = "[✗](bold red) "
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vicmd_symbol = "[❮](green)"
+
+[directory]
+style = "blue"
+read_only = " 🔒"
+truncation_length = 4
+truncate_to_repo = true
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󱞊 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
 
 # Clear visibility for exit codes
 [status]
@@ -34,27 +64,56 @@ symbol = " "
 format = '[\[$symbol$status\]]($style) '
 disabled = false
 
-[hostname]
-ssh_only = false
-format =  "on [$hostname](bold blue) "
-trim_at = ".companyname.com"
-disabled = false
-
 [aws]
 format = 'on [$symbol$profile(\($region\))]($style) '
 style = "bold blue"
-symbol = "🅰 "
+symbol = "󰸏 "
 
 [aws.region_aliases]
 ap-southeast-2 = "au"
 us-east-1 = "va"
 
 [docker_context]
-format = "via [ $context](blue bold) "
+symbol = "🐳 "
+format = "via [$symbol$context]($style) "
+style = "blue bold"
+only_with_files = true
+detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
+detect_folders = []
+disabled = false
+
+[username]
+style_user = "green bold"
+style_root = "red bold"
+format = "[$user]($style) "
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format =  "on [$hostname](bold blue) "
+trim_at = ".companyname.com"
+disabled = false
+
+[shlvl]
+disabled = false
+threshold = 1
+symbol = "↕️ "
+
+[shell]
+disabled = false
+zsh_indicator = ""
+bash_indicator = ""
+
+[os]
+disabled = false
+format = "$symbol "
+symbols.Macos = " "
+symbols.Fedora = "🎩 "
+symbols.Arch = " "
 
 [python]
-symbol = " "
-# symbol = "🐍 "
+symbol = "🐍 "
 style = "bold green"
 format = "[$symbol$version]($style) "
 pyenv_version_name = true
@@ -67,9 +126,25 @@ style = "bold red"
 format = "[$symbol$version]($style) "
 version_format = "v$major"
 
-[username]
-style_user = "white bold"
-style_root = "black bold"
-format = "[$user]($style) "
+[git_branch]
+symbol = " "
+format = "[$symbol$branch]($style) "
+style = "bright-black"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+stashed = "[${count}*](green)"
+modified = "[${count}+](yellow)"
+deleted =  "[${count}-](red)"
+conflicted =  "[${count}~](red)"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+untracked = "[${count}?](blue)"
+staged = "[${count}+](green)"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[git_metrics]
 disabled = false
-show_always = true
