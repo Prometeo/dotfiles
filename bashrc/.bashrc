@@ -24,6 +24,9 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 
+#ignore upper and lowercase when TAB completion
+bind "set completion-ignore-case on"
+
 # Rust configuration
 unset rc
 . "$HOME/.cargo/env"
@@ -57,3 +60,5 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # starship
 eval "$(starship init bash)"
+
+bind -f  ~/.inputrc
