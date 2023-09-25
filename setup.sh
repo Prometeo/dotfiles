@@ -19,6 +19,7 @@ useronly=(
     starship
     # zellij
     bashrc
+    waybar
     hypr
 )
 
