@@ -17,9 +17,11 @@ useronly=(
     rofi-theme
     rofi
     starship
+    mako
     # zellij
     bashrc
     waybar
+    swaylock
     hypr
 )
 
