@@ -22,6 +22,8 @@ useronly=(
     bashrc
     waybar
     swaylock
+    wlogout
+    wofi
     hypr
 )
 
