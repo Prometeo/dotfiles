@@ -42,3 +42,6 @@ alias grep="rg"
 
 # zellij
 alias zellijl="zellij --layout-path"
+
+# lsd
+alias ls="lsd"

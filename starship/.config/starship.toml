@@ -113,7 +113,7 @@ symbols.Fedora = "🎩 "
 symbols.Arch = " "
 
 [python]
-symbol = "🐍 "
+symbol = "󰌠 "
 style = "bold green"
 format = "[$symbol$version]($style) "
 pyenv_version_name = true
