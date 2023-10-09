@@ -45,3 +45,6 @@ alias zellijl="zellij --layout-path"
 
 # lsd
 alias ls="lsd"
+
+# yay
+alias yays"=yay -Slq | fzf --preview-window=80% --preview 'cat <(yay -Si {1}) <(yay --getpkgbuild --print {1})' | xargs --no-run-if-empty --open-tty yay -S"
