@@ -25,35 +25,8 @@ tooltip label{
     color: #cdd6f4;
 }
 
-#workspaces button {
-    padding: 5px;
-    color: #313244;
-    margin-right: 5px;
-}
-
-#workspaces button.active {
-    color: #a6adc8;
-}
-
-#workspaces button.focused {
-    color: #a6adc8;
-    background: #eba0ac;
-    border-radius: 10px;
-}
-
-#workspaces button.urgent {
-    color: #11111b;
-    background: #a6e3a1;
-    border-radius: 10px;
-}
-
-#workspaces button:hover {
-    background: #11111b;
-    color: #cdd6f4;
-    border-radius: 10px;
-}
-
 #custom-launch_wofi,
+#workspaces,
 #custom-lock_screen,
 #custom-light_dark,
 #custom-power_btn,
@@ -132,4 +105,29 @@ tooltip label{
 #battery {
     color: #a6e3a1;
     border-left: 0px;
+}
+
+
+#workspaces button.active {
+    color:  #81A1C1;
+    background: radial-gradient(circle, rgba(20, 48, 187, 0.699) 5%, rgba(36, 39, 54, 0.5) 18%, rgba(132,129,156,0) 23%, rgba(70, 76, 98, 0.201) 24%, rgba(132,129,156,0) 30%);
+    animation: button_activate .2s ease-in-out;
+}
+
+#workspaces button.urgent {
+    color:  #fa9f8e;
+    background: radial-gradient(circle, rgba(25, 79, 255, 0.3) 20%, rgba(132,129,156,0) 30%);
+}
+
+#workspaces button.persistent {
+    color:  #85909e;
+}
+
+#workspaces button:hover {
+    border: none;
+    background: radial-gradient(circle, rgba(25, 79, 255, 0.1) 20%, rgba(132,129,156,0) 30%);
+}
+
+#workspaces button.active:hover, #workspaces button.urgent:hover {
+    background: inherit;
 }
