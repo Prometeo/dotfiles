@@ -1,3 +1,6 @@
+# lsd
+alias ls="lsd"
+
 # Navigation
 alias ..="cd .."
 alias ...="cd ../.."
@@ -6,9 +9,6 @@ alias .....="cd ../../../.."
 alias -- -="cd -"
 
 # Listing
-alias ls="ls --color=auto -CF"
-alias ll="ls -alF"
-alias la="ls -A"
 alias -- +x="chmod +x"
 alias o="open"
 alias oo="open ."
@@ -42,9 +42,6 @@ alias grep="rg"
 
 # zellij
 alias zellijl="zellij --layout-path"
-
-# lsd
-alias ls="lsd"
 
 # yay
 alias yays"=yay -Slq | fzf --preview-window=80% --preview 'cat <(yay -Si {1}) <(yay --getpkgbuild --print {1})' | xargs --no-run-if-empty --open-tty yay -S"

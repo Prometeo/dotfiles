@@ -61,4 +61,14 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 # starship
 eval "$(starship init bash)"
 
+# pyenv: list and activate one virtualenv
+function pyv() {
+    pyenv activate $(ls .pyenv/versions | fzf --height 40% --reverse)
+}
+
+# search and execute command from history
+fh() {
+  eval $( (fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
+}
+
 bind -f  ~/.inputrc
