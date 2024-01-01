@@ -1,3 +1,16 @@
 #!/bin/sh
 
+#set the xfce theme
+xfconf-query -c xsettings -p /Net/ThemeName -s "Adwaita$SWITCHTO"
+xfconf-query -c xsettings -p /Net/IconThemeName -s "Adwaita$SWITCHTO"
+
+#set the GTK theme
+gsettings set org.gnome.desktop.interface gtk-theme "Adwaita$SWITCHTO"
+gsettings set org.gnome.desktop.interface icon-theme "Adwaita$SWITCHTO"
+
+
+
 random-wallpaper $HOME/wallpapers/
+
+#restart the waybar
+killall -SIGUSR2 waybar
