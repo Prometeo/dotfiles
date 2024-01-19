@@ -63,7 +63,7 @@ eval "$(starship init bash)"
 
 # pyenv: list and activate one virtualenv
 function pyv() {
-    pyenv activate $(ls .pyenv/versions | fzf --height 40% --reverse)
+    pyenv activate $(ls ~/.pyenv/versions | fzf --height 40% --reverse)
 }
 
 # search and execute command from history
