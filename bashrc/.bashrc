@@ -61,6 +61,9 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 # starship
 eval "$(starship init bash)"
 
+#zoxide
+eval "$(zoxide init --cmd cd bash)"
+
 # pyenv: list and activate one virtualenv
 function pyv() {
     pyenv activate $(ls ~/.pyenv/versions | fzf --height 40% --reverse)
