@@ -66,7 +66,7 @@ eval "$(zoxide init --cmd cd bash)"
 
 # pyenv: list and activate one virtualenv
 function pyv() {
-    pyenv activate $(ls ~/.pyenv/versions | fzf --height 40% --reverse)
+  pyenv activate $(find ~/.pyenv/versions -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | fzf --height 40% --reverse)
 }
 
 # search and execute command from history
