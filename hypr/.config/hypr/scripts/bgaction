@@ -14,5 +14,5 @@
 # fi
 
 wallpaper_path="${HOME}/wallpapers/"
-image=$(find ${wallpaper_path}/ -type f | shuf -n 1 | xargs -I{} basename {})
+image=$(find ${wallpaper_path}/ -type f -not -path "${wallpaper_path}/lock/*" | shuf -n 1 | xargs -I{} basename {})
 swaybg -i ${wallpaper_path}/${image} > /dev/null 2>&1 &
