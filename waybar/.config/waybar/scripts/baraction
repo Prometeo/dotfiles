@@ -10,7 +10,10 @@ gsettings set org.gnome.desktop.interface icon-theme "Adwaita$SWITCHTO"
 
 
 
-random-wallpaper $HOME/wallpapers/
+# random-wallpaper $HOME/wallpapers/
+wallpaper_path="${HOME}/wallpapers/"
+image=$(find ${wallpaper_path}/ -type f -not -path "${wallpaper_path}/lock/*" | shuf -n 1 | xargs -I{} basename {})
+swaybg -i ${wallpaper_path}/${image} > /dev/null 2>&1 &
 
 #restart the waybar
 killall -SIGUSR2 waybar
