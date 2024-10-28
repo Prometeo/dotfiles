@@ -75,3 +75,9 @@ fh() {
 }
 
 bind -f  ~/.inputrc
+
+# fastapi autocompletion
+source '/home/prometeo/.bash_completions/fastapi.sh'
+
+# direnv hook
+eval "$(direnv hook bash)"
