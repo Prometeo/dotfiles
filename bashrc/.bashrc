@@ -82,3 +82,8 @@ source '/home/prometeo/.bash_completions/fastapi.sh'
 # direnv hook
 eval "$(direnv hook bash)"
 source <(kubectl completion bash)
+
+# ZVM
+export ZVM_INSTALL="$HOME/.zvm/self"
+export PATH="$PATH:$HOME/.zvm/bin"
+export PATH="$PATH:$ZVM_INSTALL/"
