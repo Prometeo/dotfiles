@@ -76,12 +76,9 @@ fh() {
 
 bind -f  ~/.inputrc
 
-# fastapi autocompletion
-source '/home/prometeo/.bash_completions/fastapi.sh'
-
 # direnv hook
-eval "$(direnv hook bash)"
-source <(kubectl completion bash)
+# eval "$(direnv hook bash)"
+# source <(kubectl completion bash)
 
 # ZVM
 export ZVM_INSTALL="$HOME/.zvm/self"
