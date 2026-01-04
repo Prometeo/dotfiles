@@ -115,10 +115,11 @@ symbols.Arch = " "
 [python]
 symbol = "󰌠 "
 style = "bold green"
-format = "[$symbol$version]($style) "
-pyenv_version_name = true
-version_format = "v$major"
+format = '[${symbol}(${version} )(\($virtualenv\) )]($style)'
+pyenv_version_name = false
+version_format = "v${raw}"
 pyenv_prefix = "pyenv"
+python_binary = "python3"
 
 [rust]
 symbol = "🦀 "
