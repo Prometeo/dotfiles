@@ -18,10 +18,9 @@ useronly=(
     rofi
     starship
     mako
-    # zellij
     bashrc
     waybar
-    swaylock
+    swaync
     wlogout
     wofi
     hypr

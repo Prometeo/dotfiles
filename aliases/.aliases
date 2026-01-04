@@ -43,5 +43,6 @@ alias grep="rg"
 # zellij
 alias zellijl="zellij --layout-path"
 
-# yay
-alias yays"=yay -Slq | fzf --preview-window=80% --preview 'cat <(yay -Si {1}) <(yay --getpkgbuild --print {1})' | xargs --no-run-if-empty --open-tty yay -S"
+
+# neohtop
+alias neohtop="NeoHtop"
