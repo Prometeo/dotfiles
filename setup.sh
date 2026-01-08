@@ -24,6 +24,7 @@ useronly=(
     wlogout
     wofi
     hypr
+    helix
     scripts
     lsd
     zellij

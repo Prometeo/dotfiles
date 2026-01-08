@@ -43,8 +43,6 @@ function mk() {
   mkdir -p "$@" && cd "$@"
 }
 
-# export to paths
-export PATH="$HOME/.local/bin/:$PATH"
 
 # Python
 export PYENV_ROOT="$HOME/.pyenv"
@@ -79,8 +77,3 @@ bind -f  ~/.inputrc
 # direnv hook
 # eval "$(direnv hook bash)"
 # source <(kubectl completion bash)
-
-# ZVM
-export ZVM_INSTALL="$HOME/.zvm/self"
-export PATH="$PATH:$HOME/.zvm/bin"
-export PATH="$PATH:$ZVM_INSTALL/"
