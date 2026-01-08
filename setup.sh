@@ -17,6 +17,7 @@ useronly=(
     rofi-theme
     rofi
     starship
+    kitty
     mako
     bashrc
     waybar
