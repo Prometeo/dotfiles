@@ -28,6 +28,7 @@ useronly=(
     helix
     scripts
     lsd
+    yazi
     zellij
 )
 
