@@ -16,6 +16,8 @@ alias e="$EDITOR"
 
 # Working on files
 alias mv="mv -i"
+alias e='hx "$(find . -type f | fzf --prefix "cat {}")"'
+alias delete='rm -rf $(find | fzf -m)'
 
 # Git
 alias gs="git status"
@@ -24,8 +26,6 @@ alias gp="git push"
 alias gd="git diff"
 alias gfl="git flow"
 
-# python
-alias pipf="pip3 install jedi black autopep8 yapf rope ruff pysort pyright"
 # bat & cat
 alias cat="bat"
 

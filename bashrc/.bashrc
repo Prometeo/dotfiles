@@ -24,6 +24,9 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 
+export EDITOR=hx
+export VISUAL=hx
+
 #ignore upper and lowercase when TAB completion
 bind "set completion-ignore-case on"
 
@@ -40,7 +43,7 @@ source ~/.aliases
 
 # Create a new directory and enter it
 function mk() {
-  mkdir -p "$@" && cd "$@"
+  mkdir -pv "$@" && cd "$@"
 }
 
 
