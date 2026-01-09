@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+# swaylock
+swaylock --config ~/.config/swaylock/config

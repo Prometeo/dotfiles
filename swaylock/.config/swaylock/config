@@ -1,0 +1,5 @@
+image=~/wallpapers/lock/iron-man-red-glow.png
+scaling=fill
+indicator-caps-lock
+inside-caps-lock-color=red
+line-caps-lock-color=orange

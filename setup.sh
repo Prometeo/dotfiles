@@ -30,6 +30,7 @@ useronly=(
     scripts
     lsd
     yazi
+    swaylock
     zellij
 )
 
