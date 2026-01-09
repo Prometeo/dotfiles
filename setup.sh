@@ -24,6 +24,7 @@ useronly=(
     swaync
     wlogout
     wofi
+    niri
     hypr
     helix
     scripts
