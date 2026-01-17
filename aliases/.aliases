@@ -43,6 +43,11 @@ alias grep="rg"
 # zellij
 alias zellijl="zellij --layout-path"
 
-
 # neohtop
 alias neohtop="NeoHtop"
+
+# Generate rand string
+alias rndstr="openssl rand -base64 32"
+
+# list files and preview
+alias  lfp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"

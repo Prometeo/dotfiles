@@ -24,8 +24,8 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 
-export EDITOR=hx
-export VISUAL=hx
+export EDITOR=nvim
+export VISUAL=nvim
 
 #ignore upper and lowercase when TAB completion
 bind "set completion-ignore-case on"
@@ -46,18 +46,6 @@ function mk() {
   mkdir -pv "$@" && cd "$@"
 }
 
-
-# Python
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
-if command -v pyenv 1>/dev/null 2>&1; then
-      eval "$(pyenv init --path)"
-fi
-
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # starship
 eval "$(starship init bash)"

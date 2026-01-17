@@ -25,6 +25,7 @@ useronly=(
     wlogout
     wofi
     niri
+    nvim
     hypr
     helix
     scripts
