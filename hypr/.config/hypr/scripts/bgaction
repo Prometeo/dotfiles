@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+
 pkill swaybg
 wallpaper_path="${HOME}/wallpapers"
 image=$(find ${wallpaper_path}/ -type f -not \( -path "${wallpaper_path}/.git/*" -o -path "wallpapers/.git/*" \) | shuf -n 1 | xargs -I{} basename {})

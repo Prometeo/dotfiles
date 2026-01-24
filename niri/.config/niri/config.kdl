@@ -24,7 +24,7 @@ input {
         }
 
         repeat-rate 35
-        repeat-delay 200
+        repeat-delay 500
 
         // Enable numlock on startup, omitting this setting disables it.
         numlock
@@ -475,3 +475,5 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 }
+
+include "dms/cursor.kdl"
